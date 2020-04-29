@@ -57,3 +57,8 @@ class OrdersController < ApplicationController
   end
 
 end
+
+# SELECT products.name as product, line_items.price_cents as unit_price, line_items.quantity as quantity
+# FROM line_items
+# JOIN products ON line_items.product_id = products.id
+# WHERE line_items.order_id = $1
