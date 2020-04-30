@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resource :cart, only: [:show] do
     post   :add_item
     post   :remove_item
+
   end
+  match 'about' => 'about#show', :via => :get
 
   resources :orders, only: [:create, :show]
 
