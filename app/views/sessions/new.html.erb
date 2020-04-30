@@ -1,0 +1,9 @@
+<h1 class="text-center">Login</h1>
+
+<%= form_tag '/login' do %>
+
+  <div class="form-group text-center">Email: </div> <div class="form-group text-center"><%= text_field_tag :email %></div>
+  <div class="form-group text-center">Password: </div><div class="form-group text-center"><%= password_field_tag :password %></div>
+  <div class="form-group text-center"><%= submit_tag "Submit" %></div>
+
+<% end %>
