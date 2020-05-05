@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   setup do
-    @attrs = { email: "something@here.com", password: "123456", password_confirmation: "123456", name: "Michelle"}
+    @attrs = { email: "something@here.com", password: "12345678", password_confirmation: "12345678", name: "Michelle"}
   end
    describe 'Validations' do
     it "checks that password and password confirmation are the same" do
@@ -23,7 +23,7 @@ RSpec.describe User, type: :model do
 
     it "email validation is not case sensitive" do
       assert User.create(@attrs)
-      assert user = User.new({email: "SOMETHING@here.COM",password: "123456", password_confirmation: "123456"})
+      assert user = User.new({email: "SOMETHING@here.COM",password: "12345678", password_confirmation: "12345678"})
       expect(user).to_not be_valid
     end
     
@@ -32,6 +32,9 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
 
-    
+    it "validates that password has at least 8 characters" do
+      @user = User.new({email: "test@test.com", password: "Strong", password_confirmation: "Strong"})
+      expect(@user).to_not be_valid
+    end
   end
 end
